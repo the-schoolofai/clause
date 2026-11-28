@@ -12,12 +12,14 @@ async def lifespan(app: FastAPI):
     yield
     app.state.agent.close()
 
+
 app = FastAPI(title="Clause AI APIs", lifespan=lifespan)
 
 
 @app.get("/")
 def health():
     return {"status": "ok"}
+
 
 @app.post("/ask", response_model=AgentReply)
 def ask_query(body: AskRequest, req: Request) -> AgentReply:

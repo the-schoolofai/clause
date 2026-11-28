@@ -16,5 +16,5 @@ def get_vector_store(settings: Settings) -> QdrantVectorStore:
         sparse_embedding=FastEmbedSparse(model_name="Qdrant/bm25"),
         retrieval_mode=RetrievalMode.HYBRID,
         vector_name="dense",
-        sparse_vector_name="sparse"
+        sparse_vector_name="sparse",
     )

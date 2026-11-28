@@ -5,14 +5,16 @@ from pydantic import Field, StringConstraints, computed_field
 from app.schemas.base import Schema
 from app.schemas.retrieval import Source
 
-Question = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=2000)]
+Question = Annotated[
+    str, StringConstraints(strip_whitespace=True, min_length=1, max_length=2000)
+]
 
 
 class AskRequest(Schema):
     """Body of POST /ask."""
 
     question: Question
-    thread_id: str | None = None   # send it back to continue a conversation
+    thread_id: str | None = None  # send it back to continue a conversation
 
 
 class ToolCall(Schema):

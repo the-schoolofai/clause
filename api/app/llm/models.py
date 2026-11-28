@@ -14,5 +14,6 @@ def get_chat_model(settings: Settings) -> BaseChatModel:
         # temperature=settings.chat_temperature,
     )
 
+
 def get_fallback_model(settings: Settings):
     pass

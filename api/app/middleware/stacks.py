@@ -17,9 +17,7 @@ def default_stack(settings: Settings) -> list[AgentMiddleware]:
         ModelCallLimitMiddleware(
             run_limit=settings.max_model_calls, exit_behavior="end"
         ),
-        ToolCallLimitMiddleware(
-            run_limit=settings.max_tool_calls
-        ),
+        ToolCallLimitMiddleware(run_limit=settings.max_tool_calls),
         ContextEditingMiddleware(
             edits=[
                 ClearToolUsesEdit(
@@ -32,8 +30,8 @@ def default_stack(settings: Settings) -> list[AgentMiddleware]:
         SummarizationMiddleware(
             model=get_chat_model(settings),
             trigger=("tokens", settings.summary_trigger_tokens),
-            keep=("messages", settings.summary_keep_messages)
-        )
+            keep=("messages", settings.summary_keep_messages),
+        ),
     ]
 
     fallback = get_fallback_model(settings)

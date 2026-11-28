@@ -1,7 +1,9 @@
 import re
 
 # A numbered section whose title starts with "Internal:", up to the next numbered section (or end of page)
-INTERNAL_SECTION = re.compile(r"^\d+\.\s*Internal:.*?(?=^\d+\.\s|\Z)", re.MULTILINE | re.DOTALL)
+INTERNAL_SECTION = re.compile(
+    r"^\d+\.\s*Internal:.*?(?=^\d+\.\s|\Z)", re.MULTILINE | re.DOTALL
+)
 
 
 def remove_internal(text: str) -> str:
