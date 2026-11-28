@@ -1,15 +1,15 @@
 from langchain.agents.middleware import (
     AgentMiddleware,
+    ClearToolUsesEdit,
+    ContextEditingMiddleware,
     ModelCallLimitMiddleware,
     ModelFallbackMiddleware,
-    ToolCallLimitMiddleware,
     SummarizationMiddleware,
-    ClearToolUsesEdit, ContextEditingMiddleware
+    ToolCallLimitMiddleware,
 )
 
 from app.core.config import Settings
 from app.llm.models import get_chat_model, get_fallback_model
-from app.guardrails.pii import pii_guardrails
 
 
 def default_stack(settings: Settings) -> list[AgentMiddleware]:
